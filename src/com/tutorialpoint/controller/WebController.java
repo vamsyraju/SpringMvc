@@ -18,7 +18,7 @@ public class WebController {
 	}
 	@RequestMapping(value="/finalPage",method=RequestMethod.GET)
 	public String finalPage(){
-		return "final";
+		return "redirect:/pages/final.htm";
 	}
 
 }

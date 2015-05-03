@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.tutorialpoint.domain.Student;
+import com.tutorialpoint.exception.StudentException;
 
 @Controller
 public class StudentController {
@@ -19,6 +20,9 @@ public class StudentController {
 
 	@RequestMapping(value = "/addstudent", method = RequestMethod.POST)
 	public String addStudent(@ModelAttribute("SpringMvc")Student student, ModelMap model) {
+		if(student.getAge()<10){
+			throw new StudentException("Age cannot be less then 10");
+		}
 		model.addAttribute("name", student.getName());
 		model.addAttribute("age", student.getAge());
 		model.addAttribute("id", student.getId());
